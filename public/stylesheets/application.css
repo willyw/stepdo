@@ -1,0 +1,11 @@
+body { width:100%;  font-size:14px; font-family:  Helvetica, Arial; color:rgb(10,10,10);min-width: 960px;}
+#main { width:960px; margin:0 auto; /*border:1px solid black;*/}
+#footer { text-align:center;}
+
+
+
+#main h1 { text-align:center; font-size:30px; padding-top:20px; padding-bottom:20px; /*border:1px solid red;*/}
+#main div.step { padding-left:50px; margin-bottom: 25px;}
+#main div.step h2 { font-size:18px; padding-top:10px; padding-bottom:9px;}
+#main div.step p.step-description { padding-left: 20px; line-height:20px; color: rgb(100,100,100); font-size:14px;}
+
