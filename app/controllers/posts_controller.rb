@@ -27,8 +27,15 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
     @post.update_attributes(params[:post])
     # sleep 5 
-    redirect_to edit_post_url(@post.id)
-    
+    respond_to do |format|
+      format.js {
+        
+      }
+      
+      format.html { 
+        redirect_to edit_post_url(@post.id)
+      }
+    end
   end
   
 private
