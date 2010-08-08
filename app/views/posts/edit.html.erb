@@ -1,8 +1,8 @@
 <div id="post-header">
-	<h1 id='post-title'>Title of Your Guide</h1>
-	<% form_for Post.new , :html=>{:class=>"form-hidden"} do |f| %>
+	<h1 id='post-title'><%= @post.title %></h1>
+	<% form_for @post, :html=>{:class=>"form-hidden"} do |f| %>
 		<%= f.text_field :title %>
-			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= give_secret_key %>" />
+			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= @post.uuid %>" />
 			<input type="hidden" id="post_owner" name="post_owner" value="1" />
 			
 		
@@ -13,7 +13,7 @@
 <ul>
 	<div id='step-1' class="step">
 		<h2>The First Step of Your Guide</h2>
-		
+	
 		<p class="step-description">
 			Fusce cursus tellus a augue. Phasellus ut arcu ut nulla dignissim auctor. Etiam sed elit sed diam tempus consectetuer. Proin dignissim, velit a gravida elementum, metus tellus dictum mauris, quis auctor est lectus in sapien. Fusce diam arcu, ultricies non, ullamcorper feugiat, semper quis, tortor. Phasellus egestas feugiat augue. Vestibulum nec wisi.
 		</p>
@@ -37,7 +37,7 @@
 
 
 
-<input type="hidden" id="secret_key" name="post_secret_key" value="<%= give_secret_key %>" />
+<input type="hidden" id="secret_key" name="post_secret_key" value="<%= @post.uuid %>" />
 
 
 
