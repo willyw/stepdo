@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	$("#main").keypress(function(e){
+		if(e.keyCode == '13'){
+			// alert("enter is pressend");
+			return false;
+		}
+	});
+	
 	$("#main").click(function(e){
 		var $target = $(e.target);
 		
@@ -6,14 +13,11 @@ $(document).ready(function(){
 			$target.hide();
 			$("form.post_title", $target.parent() ).show();
 			$("form.post_title input[type='text']", $target.parent() ).focus();
-			// $("form.post_title input[type='text']", $target.parent() ).attr('value', $target.text());
 			$("form.post_title input[type='text']", $target.parent() ).blur( function(){
 				if(this.value == this.defaultValue){
-				  // // alert("The value didn't change... no ajax");
 					$target.show();
 					$("form.post_title", $target.parent() ).hide();
 				}else{
-					// // alert("The value changed! Send ajax");
 					$("form.post_title input[type='text']", $target.parent() ).unbind('blur');
 					var formdata = $("form.post_title", $target.parent() ).serialize();
 					var destination = $("form.post_title", $target.parent() ).attr('action');
@@ -28,11 +32,9 @@ $(document).ready(function(){
 							$target.text( title );
 							$target.show();
 							$("form.post_title", $target.parent() ).replaceWith(new_form);
-							
 						}
 					});
 				}
-				
 			});
 		}
 		
@@ -42,9 +44,7 @@ $(document).ready(function(){
 				$("form.new_step_title input[type='text']", $target.parent() ).show();
 				$("form.new_step_title input[type='text']", $target.parent() ).focus();
 				$("form.new_step_title input[type='text']", $target.parent() ).blur( function(){
-					// // alert("blurred");
 					if(this.value == this.defaultValue){
-						// alert("value doesn't change");
 						$target.show();
 						$("form.new_step_title input[type='text']", $target.parent() ).hide();
 					}else{
@@ -71,10 +71,39 @@ $(document).ready(function(){
 				});
 				
 				
-			}
+			} 
 			
 			if( $target.is('p') ){
 				// // alert("yeah, this is p");
+				$target.hide();
+				$("form.new_step_description textarea", $target.parent() ).show();
+				$("form.new_step_description textarea", $target.parent() ).focus();
+				$("form.new_step_description textarea", $target.parent() ).blur( function(){
+					if(this.value == this.defaultValue){
+						$target.show();
+						$("form.new_step_description textarea", $target.parent() ).hide();
+					}else{
+						var new_text = $("form.new_step_description textarea", $target.parent() ).attr('value');
+						$("form.new_step_description textarea", $target.parent() ).unbind('blur');
+						$target.text( new_text );
+						$target.show();
+						$("form.new_step_description", $target.parent() ).hide();
+						
+						var formdata = $("form.new_step_description", $target.parent() ).serialize();
+						var destination = $("form.new_step_description", $target.parent() ).attr('action');
+						$.ajax({
+							type: "POST",
+							url: destination,
+							data: formdata,
+							datatype : 'script',
+							success: function(response){
+								// $target.text( title );
+								$("form.new_step_description", $target.parent() ).replaceWith(new_form);
+							}
+						});
+					}
+
+				});
 			}
 		}
 		

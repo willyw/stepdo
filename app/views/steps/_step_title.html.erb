@@ -2,5 +2,6 @@
 	<%= f.text_field :title , :id => ""%>
 		<input type="hidden" class="secret_key" name="post_secret_key" value="<%= step.post.uuid %>" />
 		<input type="hidden" id="post_owner" name="post_owner" value="1" />
+		<input type="hidden" class="secret_key" name="step[order]" value="1" />
 	<%= submit_tag "Done" %>
 <% end %>
