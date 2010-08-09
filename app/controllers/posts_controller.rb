@@ -1,20 +1,32 @@
 class PostsController < ApplicationController
   def new
-    
+    @post_secret_key = UUIDTools::UUID.timestamp_create.to_s 
   end
   
   def create
-    if post_exists?(params)
-    
-      # redirect to update
+    if @post = post_exists?(params)
+      
+      @post.update_attributes( params[:post] )
+    else
+      @post = Post.new(params[:post])
+      @post.uuid = params[:post_secret_key]
+      @post.user_id = params[:post_owner]
+      @post.save
     end
     
     # create a new post with a given title
-    @post = Post.new(params[:post])
-    @post.uuid = params[:secret_key]
-    @post.user_id = params[:post_owner]
-    @post.save
-    redirect_to edit_post_url(@post.id)
+
+    
+    respond_to do |format|
+      format.js{
+        
+      }
+      
+      format.html{
+        redirect_to edit_post_url(@post.id)
+      }
+    end
+    
   
   end
   
@@ -41,10 +53,10 @@ class PostsController < ApplicationController
 private
   def post_exists?(params)
      post = Post.find(:first, :conditions => {
-       :uuid => params[:secret_key], 
+       :uuid => params[:post_secret_key], 
        :user_id => params[:post_owner]
      })
      
-     !post.nil?
+     
   end
 end

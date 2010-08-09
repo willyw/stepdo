@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100808171752) do
 
   create_table "steps", :force => true do |t|
     t.integer  "post_id"
+    t.integer  "order"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"

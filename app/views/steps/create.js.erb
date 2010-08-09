@@ -1,0 +1,6 @@
+$("#secret_key").attr('value', "<%=  @post.uuid %>");
+var title = "<%= @step.title %>";
+<% new_form = render :partial => "step_title", :locals => {:step => @step } %>
+var new_form = "<%= escape_javascript( new_form ) %>";
+
+

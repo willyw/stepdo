@@ -1,8 +1,8 @@
 <div id="post-header">
 	<h1 id='post-title'>Title of Your Guide</h1>
-	<% form_for Post.new , :html=>{:class=>"form-hidden"} do |f| %>
-		<%= f.text_field :title %>
-			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= give_secret_key %>" />
+	<% form_for Post.new , :html=>{:class=>"post_title"} do |f| %>
+		<%= f.text_field :title  %>
+			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" id="post_owner" name="post_owner" value="1" />
 			
 		
@@ -13,6 +13,12 @@
 <ul>
 	<div id='step-1' class="step">
 		<h2>The First Step of Your Guide</h2>
+		<% form_for Step.new , :html => { :id => "", :class => "new_step_title"} do |f| %>
+			<%= f.text_field :title, :id => "" %>
+			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
+			<input type="hidden" class="secret_key" name="step[order]" value="1" />
+			<%= submit_tag "Done" %>
+		<% end %>
 		
 		<p class="step-description">
 			Fusce cursus tellus a augue. Phasellus ut arcu ut nulla dignissim auctor. Etiam sed elit sed diam tempus consectetuer. Proin dignissim, velit a gravida elementum, metus tellus dictum mauris, quis auctor est lectus in sapien. Fusce diam arcu, ultricies non, ullamcorper feugiat, semper quis, tortor. Phasellus egestas feugiat augue. Vestibulum nec wisi.
@@ -21,6 +27,13 @@
 	
 	<div id='step-2' class="step">
 		<h2>The Second Step of Your Guide</h2>
+		<% form_for Step.new , :html => {:id => "",  :class => "new_step_title"} do |f| %>
+			<%= f.text_field :title, :id => "" %>
+			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
+			<input type="hidden" class="secret_key" name="step[order]" value="2" />
+			<%= submit_tag "Done" %>
+		<% end %>
+		
 		<p class="step-description">
 			Phasellus ut arcu ut nulla dignissim auctor. Etiam sed elit sed diam tempus consectetuer. Proin dignissim, velit a gravida elementum, metus tellus dictum mauris, quis auctor est lectus in sapien. Fusce diam arcu, ultricies non, ullamcorper feugiat, semper quis, tortor. Phasellus egestas feugiat augue. Vestibulum nec wisi. Vivamus lacus wisi, tincidunt quis, vulputate sit amet, placerat vitae, massa. 
 			
@@ -29,6 +42,13 @@
 	
 	<div id='step-3' class="step">
 		<h2>The Third Step of Your Guide</h2>
+		<% form_for Step.new , :html => {:id => "", :class => "new_step_title"} do |f| %>
+			<%= f.text_field :title, :id => "" %>
+			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
+			<input type="hidden" class="secret_key" name="step[order]" value="3" />
+			<%= submit_tag "Done" %>
+		<% end %>
+		
 		<p class="step-description">
 			Nullam tortor. Fusce malesuada. Quisque dolor mauris, malesuada quis, ultricies non, interdum blandit, lectus. Etiam nulla lacus, nonummy a, blandit sed, pellentesque eget, arcu. Phasellus id pede. Vivamus tortor nibh, tempus auctor, interdum a, faucibus ut, mi. Aliquam tincidunt turpis eleifend orci. Mauris at odio vel metus ullamcorper blandit. Nullam tortor.
 		</p>
@@ -37,7 +57,7 @@
 
 
 
-<input type="hidden" id="secret_key" name="post_secret_key" value="<%= give_secret_key %>" />
+<!-- <input type="hidden" id="secret_value" name="post_secret_key" value="<%= give_secret_key %>" /> -->
 
 
 

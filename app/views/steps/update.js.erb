@@ -1,0 +1,3 @@
+// alert("boom boom from step updates.js.erb");
+<% new_form = render :partial => "step_title", :locals => {:step => @step } %>
+var new_form = "<%= escape_javascript( new_form ) %>";
