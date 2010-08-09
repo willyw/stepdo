@@ -9,11 +9,11 @@ $(document).ready(function(){
 			// $("form.post_title input[type='text']", $target.parent() ).attr('value', $target.text());
 			$("form.post_title input[type='text']", $target.parent() ).blur( function(){
 				if(this.value == this.defaultValue){
-				  // alert("The value didn't change... no ajax");
+				  // // alert("The value didn't change... no ajax");
 					$target.show();
 					$("form.post_title", $target.parent() ).hide();
 				}else{
-					// alert("The value changed! Send ajax");
+					// // alert("The value changed! Send ajax");
 					$("form.post_title input[type='text']", $target.parent() ).unbind('blur');
 					var formdata = $("form.post_title", $target.parent() ).serialize();
 					var destination = $("form.post_title", $target.parent() ).attr('action');
@@ -42,9 +42,9 @@ $(document).ready(function(){
 				$("form.new_step_title input[type='text']", $target.parent() ).show();
 				$("form.new_step_title input[type='text']", $target.parent() ).focus();
 				$("form.new_step_title input[type='text']", $target.parent() ).blur( function(){
-					// alert("blurred");
+					// // alert("blurred");
 					if(this.value == this.defaultValue){
-						alert("value doesn't change");
+						// alert("value doesn't change");
 						$target.show();
 						$("form.new_step_title input[type='text']", $target.parent() ).hide();
 					}else{
@@ -74,7 +74,7 @@ $(document).ready(function(){
 			}
 			
 			if( $target.is('p') ){
-				// alert("yeah, this is p");
+				// // alert("yeah, this is p");
 			}
 		}
 		
@@ -84,7 +84,7 @@ $(document).ready(function(){
 	});
 	
 	// $("input, textarea").focus(function(){
-	// 	alert("boom boom, focused");
+	// 	// alert("boom boom, focused");
 	// 	this.select();
 	// });
 	
