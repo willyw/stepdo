@@ -11,4 +11,10 @@ Rails::Initializer.run do |config|
   config.gem 'uuidtools'
   config.time_zone = 'UTC'
 
+  config.gem 'mime-types', :lib => 'mime/types'
+
+  %w(middleware).each do |dir|
+    config.load_paths << "#{RAILS_ROOT}/app/#{dir}"
+  end
+    
 end

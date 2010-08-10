@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	
+	
 	$("#add_step").click(function(){
 		// code to add step
 		var $step = $('div.step').last().clone();
@@ -94,6 +97,7 @@ $(document).ready(function(){
 				$target.hide();
 				$("form.new_step_description textarea", $target.parent() ).show();
 				$("form.new_step_description textarea", $target.parent() ).focus();
+
 				$("form.new_step_description textarea", $target.parent() ).blur( function(){
 					if(this.value == this.defaultValue){
 						$target.show();
@@ -118,21 +122,12 @@ $(document).ready(function(){
 							}
 						});
 					}
-
 				});
 			}
-		}
-		
-		
-		
-		
+		}	
 	});
 	
-	// $("input, textarea").focus(function(){
-	// 	// alert("boom boom, focused");
-	// 	this.select();
-	// });
-	
+
 	$("#main").focus(function(e){
 		var $target_focus = $(e.target);
 		if( $target_focus.is("input[type='text']") || $target_focus.is('textarea')){
