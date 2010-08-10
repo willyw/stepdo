@@ -7,5 +7,11 @@ $("#secret_key").attr('value', "<%=  @post.uuid %>");
 	<% new_form = render :partial => "step_description", :locals => {:step => @step } %>
 <% end %>
 
-
 var new_form = "<%= escape_javascript( new_form ) %>";
+
+
+// we have to upgrade the description as well ( form )
+// or else, it sticks to be the old one
+// concurrency problem?
+// what if we created the title through AJAX.
+// and, before the response gets back to the user, he created another post
