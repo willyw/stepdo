@@ -12,7 +12,7 @@ body { width:100%;  font-size:14px; font-family:  Helvetica, Arial; color:rgb(10
 	
 	
 #main div.step { padding-left:50px; margin-bottom: 25px;}
-#main div.step h2 { font-size:18px; padding-top:10px; padding-bottom:9px;}
+#main div.step h2 { font-size:20px; padding-top:10px; padding-bottom:9px;}
 #main div.step p.step-description { padding-left: 20px; line-height:20px; color: rgb(100,100,100); font-size:14px;}
 #main form.new_step_title input[type='text']{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:80%; text-align:left; display:none;  margin-bottom:5px;}
 #main form.new_step_description textarea{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:14px; outline:none; width:80%; text-align:left; display:none;  margin-bottom:5px; height:100px; font-family: Helvetica, Arial; padding:10px; color: #646464; line-height:20px;}

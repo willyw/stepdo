@@ -16,7 +16,7 @@
 		<% form_for Step.new , :html => { :id => "", :class => "new_step_title"} do |f| %>
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="1" />
+			<input type="hidden" class="order" name="step[order]" value="1" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -26,7 +26,7 @@
 		<% form_for Step.new , :html => { :id => "", :class => "new_step_description"} do |f| %>
 			<%= f.text_area :description, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="1" />
+			<input type="hidden" class="order" name="step[order]" value="1" />
 			<%= submit_tag "Done" %>
 		<% end %>
 	</div>
@@ -36,7 +36,7 @@
 		<% form_for Step.new , :html => {:id => "",  :class => "new_step_title"} do |f| %>
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="2" />
+			<input type="hidden" class="order" name="step[order]" value="2" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -47,7 +47,7 @@
 		<% form_for Step.new , :html => { :id => "", :class => "new_step_description"} do |f| %>
 			<%= f.text_area :description, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="2" />
+			<input type="hidden" class="order" name="step[order]" value="2" />
 			<%= submit_tag "Done" %>
 		<% end %>
 	</div>
@@ -57,7 +57,7 @@
 		<% form_for Step.new , :html => {:id => "", :class => "new_step_title"} do |f| %>
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="3" />
+			<input type="hidden" class="order" name="step[order]" value="3" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -67,7 +67,7 @@
 		<% form_for Step.new , :html => { :id => "", :class => "new_step_description"} do |f| %>
 			<%= f.text_area :description, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="secret_key" name="step[order]" value="3" />
+			<input type="hidden" class="order" name="step[order]" value="3" />
 			<%= submit_tag "Done" %>
 		<% end %>
 	</div>
@@ -75,7 +75,7 @@
 
 
 
-<!-- <input type="hidden" id="secret_value" name="post_secret_key" value="<%= give_secret_key %>" /> -->
+<a href="#" id="add_step">AddStep</a>
 
 
 
