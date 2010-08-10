@@ -28,5 +28,22 @@ class Step < ActiveRecord::Base
        :post_id => post.id,
        :order => params[:step][:order]
      })
+     
+     # the after or is to mitigate concurrency problem
+     #  what if there are 2nd create POST
+     #  even before the 1st create POST response
+     #  had been received by the client
   end
+  
+  def Step.find_or_create( params, post )
+    if @step = Step.step_exists?( params , post)
+    else
+      @step  = Step.create( :post_id => post.id, 
+        :order => params[:step][:order]
+      )
+    end
+    return @step
+  end
+  
+  
 end

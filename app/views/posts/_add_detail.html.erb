@@ -1,4 +1,12 @@
 <div class='detail-wrapper'>
+	
 	<img class="upload-image" src="/images/upload_pic.png" />
 	<img class="upload-code" src="/images/upload_code.png" />
+	<div class='content-pic-wrapper'>
+		<h2>Click the Browse button to select pictures</h2>
+		<% form_for Detail.new, :html => {:multipart => true, :id => "", :class=>"add_detail_pic"} do |f| %>
+			<%= f.file_field :photo, :id => "" , :class=>"uploadify"%>
+			<input type="hidden" class="order" name="step[order]" value="1" />
+		<% end %>
+	</div>
 </div>

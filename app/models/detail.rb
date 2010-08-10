@@ -11,7 +11,7 @@ class Detail < ActiveRecord::Base
   
   def Detail.create_or_update( params )
     @post = Post.find_or_create( params )
-    @step = Step.find_or_create( params )
+    @step = Step.find_or_create( params , @post)
     
     if @detail = Detail.detail_exists?(params, @step)
       @detail.update_attributes( params[:detail] )
@@ -23,7 +23,8 @@ class Detail < ActiveRecord::Base
     return @detail
   end
   
-  
+  # Any way to mitigate the concurrency problem?
+  # => 
   def Detail.detail_exists?(params, step)
     detail = Detail.find(:first, :conditions => {
        :id => params[:id]

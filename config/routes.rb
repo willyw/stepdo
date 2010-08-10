@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :posts
   map.resources :steps
+  map.resources :details
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

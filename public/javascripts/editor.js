@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-	
-	
 	$("#add_step").click(function(){
 		// code to add step
 		var $step = $('div.step').last().clone();
@@ -24,6 +22,63 @@ $(document).ready(function(){
 	
 	$("#main").click(function(e){
 		var $target = $(e.target);
+		
+		// for pic upload
+		if( $target.hasClass("upload-image")){
+			// set up the uploadify 
+			
+	
+			// $("div.content-pic-wrapper", $(this).parent() ).show();
+			// $("input.uploadify", $(this).parent() ).show();
+			
+			var destination = $("form.add_detail_pic", $(this).parent() ).attr('action');
+			console.log("destination is "  + destination);
+			var session_key_name = $("#session_key_name").attr('value');
+			console.log("session_key_name is " + session_key_name);
+			var session_key_value = $("#session_key_value").attr('value');
+			console.log("session_key_value is " + session_key_value);
+			var auth_token  = $("#uploadify_auth_token").attr('value');
+			console.log("auth_token is " + auth_token);
+			
+			
+			$("input.uploadify", $(this).parent() ).uploadify({
+				'uploader'       : '/javascripts/uploadify.swf',
+				'script'         : destination,
+				'cancelImg'      : '/images/cancel.png',
+				'fileDataName'    : 'detail[photo]',
+				'folder'         : 'uploads',
+				'queueID'        : 'fileQueue', // if you specify this, need to provide script with <div id="fileQueue"></div>
+				'auto'           : true,
+				'multi'          : true,
+				'scriptAccess'   : 'always',
+				'scriptData' 		: {
+					'from_uploadify' : 'yes',
+	        session_key_name : session_key_value,
+	        'authenticity_token'  : encodeURIComponent(auth_token)
+	      }
+			});
+			
+			
+			
+			var content = $("div.content-pic-wrapper", $(this).parent() ).html();
+			
+			$.fancybox(
+					content,
+					{
+			      'autoDimensions'	: false,
+						'width'         		: 500,
+						'height'        		: 200,
+						'transitionIn'		: 'fade',
+						'transitionOut'		: 'fade',
+						'padding' : 20,
+						'onStart' : function(e){
+							console.log("we are in the onStart");
+							console.log( $("#fancybox-inner").html() );
+						}
+					}
+				);
+		}
+		
 		
 		if(  $target.attr('id') == "post-title" ) {
 			$target.hide();
@@ -88,8 +143,6 @@ $(document).ready(function(){
 					}
 
 				});
-				
-				
 			} 
 			
 			if( $target.is('p') ){
