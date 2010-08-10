@@ -9,15 +9,24 @@ class Detail < ActiveRecord::Base
   belongs_to :step
   
   
-  def Detail.create_after_verify_parent( params )
-    @step = Step.find_or_create_step( params )
-    @detail = Detail.create(params[:detail])
-    @detail.step_id = @step.id
-    @detail.save
-    @detail
+  def Detail.create_or_update( params )
+    @post = Post.find_or_create( params )
+    @step = Step.find_or_create( params )
+    
+    if @detail = Detail.detail_exists?(params, @step)
+      @detail.update_attributes( params[:detail] )
+    else
+      @detail = Detail.new(params[:detail])
+      @detail.step_id = @detail.id
+      @detail.save
+    end
+    return @detail
   end
   
-  def Detail.find_or_create_step( params ) 
-    @step = Step.find_or_create( params )
+  
+  def Detail.detail_exists?(params, step)
+    detail = Detail.find(:first, :conditions => {
+       :id => params[:id]
+     })
   end
 end

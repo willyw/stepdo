@@ -22,8 +22,7 @@ class Step < ActiveRecord::Base
   
   def Step.step_exists?(params, post)
     step = Step.find(:first, :conditions => {
-       :post_id => post.id, 
-       :order => params[:step][:order]
+       :id => params[:id]
      })
   end
 end

@@ -29,7 +29,6 @@ class StepsController < ApplicationController
   def update
     @step = Step.find_by_id(params[:id])
     @step.update_attributes( params[:step] )
-    
   end
   
   
