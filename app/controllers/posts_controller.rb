@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     
     # create a new post with a given title
 
+    @post=  Post.find_or_create( params )
     
     respond_to do |format|
       format.js{

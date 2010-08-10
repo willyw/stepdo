@@ -7,4 +7,17 @@ class Detail < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
   belongs_to :step
+  
+  
+  def Detail.create_after_verify_parent( params )
+    @step = Step.find_or_create_step( params )
+    @detail = Detail.create(params[:detail])
+    @detail.step_id = @step.id
+    @detail.save
+    @detail
+  end
+  
+  def Detail.find_or_create_step( params ) 
+    @step = Step.find_or_create( params )
+  end
 end
