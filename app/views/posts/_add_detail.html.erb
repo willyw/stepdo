@@ -8,8 +8,11 @@
 			<%= f.file_field :photo, :id => "" , :class=>"uploadify"%>
 			<input type="hidden" class="order" name="step[order]" value="1" />
 		<% end %>
+		
+		<div class='loading-bar' id='pic-loader-step_<%= order %>'>
+		</div>
 	</div>
 	
-	<div class="uploaded_pic_wrapper">
-	</div>
+	<ul class="uploaded_pic_wrapper">
+	</ul>
 </div>

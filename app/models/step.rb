@@ -26,7 +26,7 @@ class Step < ActiveRecord::Base
      }) or 
      Step.find(:first, :conditions => {
        :post_id => post.id,
-       :order => (  params[:step_order] || params[:step][:order])
+       :order => ( params[:step][:order])
      })
      
      # the after or is to mitigate concurrency problem
@@ -39,7 +39,7 @@ class Step < ActiveRecord::Base
     if @step = Step.step_exists?( params , post)
     else
       @step  = Step.create( :post_id => post.id, 
-        :order => (  params[:step_order] || params[:step][:order])
+        :order => ( params[:step][:order])
       )
     end
     return @step

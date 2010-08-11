@@ -1,3 +1,4 @@
+require 'mime/types'
 class Detail < ActiveRecord::Base
   has_attached_file :photo, :styles => { :small => "150x150>" },
                     :url  => "/assets/details/:id/:style/:basename.:extension",
@@ -10,16 +11,25 @@ class Detail < ActiveRecord::Base
   
   
   def Detail.create_or_update( params )
-    @post = Post.find_or_create( params )
-    @step = Step.find_or_create( params , @post)
-    
-    if @detail = Detail.detail_exists?(params, @step)
-      @detail.update_attributes( params[:detail] )
+    @post = Post.find_or_create({:post_secret_key => params[:uuid],
+      :post_owner => params[:post_owner]
+      })
+    @step = Step.find_or_create( {:step => {
+      :order => params[:step_order]}
+      } , @post)
+
+
+
+    @detail = Detail.new(params[:detail])
+    @detail.photo_content_type = MIME::Types.type_for(params[:Filename]).to_s
+    @detail.step_id = @step.id
+    if @detail.save
+      puts "detail is saved"
     else
-      @detail = Detail.new(params[:detail])
-      @detail.step_id = @detail.id
-      @detail.save
+      puts "boom boom, something is wrong"
+      puts @detail.errors.inspect
     end
+
     return @detail
   end
   

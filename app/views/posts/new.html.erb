@@ -58,7 +58,7 @@
 			<%= submit_tag "Done" %>
 			<input type="hidden" class="post_owner" name="post_owner" value="1" />
 		<% end %>
-		<%= render :partial => "add_detail" %>
+		<%= render :partial => "add_detail" , :locals => {:order => 2}%>
 	</div>
 	
 	<div id='step-3' class="step">
@@ -84,7 +84,7 @@
 			<%= submit_tag "Done" %>
 		<% end %>
 		
-		<%= render :partial => "add_detail" %>
+		<%= render :partial => "add_detail", :locals => {:order => 3} %>
 	</div>
 </ul>
 <a href="#" id="add_step" >New Step</a>
