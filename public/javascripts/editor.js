@@ -31,7 +31,7 @@ $(document).ready(function(){
 			// $("div.content-pic-wrapper", $(this).parent() ).show();
 			// $("input.uploadify", $(this).parent() ).show();
 			
-			var destination = $("form.add_detail_pic", $(this).parent() ).attr('action');
+			var destination = $("form.add_detail_pic", $target.parent() ).attr('action');
 			console.log("destination is "  + destination);
 			var session_key_name = $("#session_key_name").attr('value');
 			console.log("session_key_name is " + session_key_name);
@@ -39,7 +39,13 @@ $(document).ready(function(){
 			console.log("session_key_value is " + session_key_value);
 			var auth_token  = $("#uploadify_auth_token").attr('value');
 			console.log("auth_token is " + auth_token);
+			var step_order = $("form.new_step_description input.order", $target.parent().parent()).attr('value');
 			
+			var dataSend = {};
+			dataSend['from_uploadify'] = "yes";
+			dataSend[session_key_name] = session_key_value;
+			dataSend['authenticity_token'] = encodeURIComponent(auth_token);
+			dataSend['step_order'] = step_order;
 			
 			$("input.uploadify", $(this).parent() ).uploadify({
 				'uploader'       : '/javascripts/uploadify.swf',
@@ -51,11 +57,14 @@ $(document).ready(function(){
 				'auto'           : true,
 				'multi'          : true,
 				'scriptAccess'   : 'always',
-				'scriptData' 		: {
-					'from_uploadify' : 'yes',
-	        session_key_name : session_key_value,
-	        'authenticity_token'  : encodeURIComponent(auth_token)
-	      }
+				'scriptData'  : dataSend,
+				onComplete		: function(event, queueID, fileObj, response, data){
+					var obj= $.parseJSON( response );
+					var $new_loader = $("#loader").clone().attr('id', '').show();
+					$new_loader.prependTo("#container");
+					$new_loader.wrap("<li id='product-image-" + obj.id +"' />");
+					getImageReady(obj.id, obj.destination);
+				}
 			});
 			
 			
@@ -187,5 +196,46 @@ $(document).ready(function(){
 			e.target.select();
 		}
 	});
-	
 });
+
+
+
+
+
+function getImageReady( product_id, destination ){
+	var dest = "'" + destination + "'"; 
+	var funct =  "getStatus(" +  product_id + ","   +    dest  +")"; 
+	setTimeout( funct , 3000);
+}
+
+function getStatus( product_id, destination){
+	var data = {
+		'product_id' : product_id
+	};
+	
+	// alert( "The interval id inside is " + intervalID);
+	$.ajax({
+	  url: destination,
+	  dataType: 'json',
+	  data: data,
+	  success: function(response){
+			if(response.status == 'OK'){
+				replaceImage(product_id, response.image_location);
+				// alert("The status is " + response.status) ;
+				// console.log("ok " + response.image_location);
+				// alert("the interval id is " + response.interval_id )
+				
+			}
+			else{
+				// alert("not ok yet");
+				// console.log("not ok yet");
+				getImageReady( product_id, destination )
+			}
+		}
+	});
+}
+
+function replaceImage(product_id, image_location){
+	$("#product-image-" + product_id + " img").attr('src',image_location );
+}
+
