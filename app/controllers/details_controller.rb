@@ -3,7 +3,7 @@ class DetailsController < ApplicationController
     
     @detail =  Detail.create_or_update( params )
     puts @detail.inspect
-    
+   
     respond_to do |f|
       f.js {
       }

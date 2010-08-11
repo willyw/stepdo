@@ -20,5 +20,6 @@ body { width:100%;  font-size:14px; font-family:  Trebuchet MS,Trebuchet,Arial,H
 #main form.new_step_title input[type='text']{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:80%; text-align:left; display:none;  margin-bottom:5px;}
 #main form.new_step_description textarea{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:18px; outline:none; width:80%; text-align:left; display:none;  margin-bottom:5px; height:100px; font-family: Helvetica, Arial; padding: 5px 10px; color: #646464; line-height:150%; margin-left:20px;}
 
-
+#main div.detail-wrapper ul.uploaded_pic_wrapper { list-style :none; margin-top:30px;}
+#main div.detail-wrapper ul.uploaded_pic_wrapper  li { float : left; width: 160px; height:160px;}
 #main  div.content-pic-wrapper{ display: none;}

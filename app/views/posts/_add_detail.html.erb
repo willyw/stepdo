@@ -5,14 +5,14 @@
 	<div class='content-pic-wrapper'>
 		<h2>Click the Browse button to select pictures</h2>
 		<% form_for Detail.new, :html => {:multipart => true, :id => "", :class=>"add_detail_pic"} do |f| %>
-			<%= f.file_field :photo, :id => "" , :class=>"uploadify"%>
+			<%= f.file_field :photo, :id => "uploadify-#{order}" , :class=>"uploadify"%>
 			<input type="hidden" class="order" name="step[order]" value="1" />
+			<div id='loading-bar-<%= order %>' class='loading-bar'></div>
 		<% end %>
 		
-		<div class='loading-bar' id='pic-loader-step_<%= order %>'>
-		</div>
+		
 	</div>
 	
-	<ul class="uploaded_pic_wrapper">
+	<ul class="uploaded_pic_wrapper clearfix">
 	</ul>
 </div>

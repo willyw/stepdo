@@ -1,5 +1,6 @@
 <%# dest =  { :destination => check_image_ready_url} %>
 <%# final_json =   @product.attributes.merge(dest) %>
 <%#= final_json.to_json %>
-
-<%= @detail.attributes.to_json %>
+<% img_source = {:img_source => @detail.photo.url(:small) } %>
+<% final_json = @detail.attributes.merge(img_source) %>
+<%= final_json.to_json %>
