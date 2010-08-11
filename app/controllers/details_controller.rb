@@ -2,6 +2,7 @@ class DetailsController < ApplicationController
   def create
     
     @detail =  Detail.create_or_update( params )
+    puts "we are out now"
     puts @detail.inspect
    
     respond_to do |f|
