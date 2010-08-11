@@ -56,18 +56,20 @@ $(document).ready(function(){
 					'scriptAccess'   : 'always',
 					onComplete : function(event, queueID, fileObj, response, data ){
 						// console.log("ZOMG... ");
+						
 						var obj= $.parseJSON( response );
 						console.log(response);
-						var $image = $("<img src='" + obj.img_source + "' />");
-						 
-						$image.appendTo( $("ul.uploaded_pic_wrapper", $target.parent()));
-						$image.wrap("<li />");
+						// var $image = $("<img src='" + obj.img_source + "' />");
+						//  
+						// $image.appendTo( $("ul.uploaded_pic_wrapper", $target.parent()));
+						// $image.wrap("<li />");
 						// console.log("appended");
 						// alert(obj.id);
-						// var $new_loader = $("#loader").clone().attr('id', '').show();
-						// 			$new_loader.prependTo("#container");
-						// 			$new_loader.wrap("<li id='product-image-" + obj.id +"' />");
-						// 			getImageReady(obj.id, obj.destination);
+						var destination_container_id = "#" + $("ul.uploaded_pic_wrapper", $target.parent()).attr('id');
+						var $new_loader = $("#loader").clone().attr('id', '').show();
+						$new_loader.appendTo( destination_container_id );
+						$new_loader.wrap("<li id='detail-image-" + obj.id +"' />");
+						getImageReady(obj.id, obj.destination);
 					},
 					'scriptData' 		 : dataSend
 				});
@@ -191,15 +193,15 @@ $(document).ready(function(){
 
 
 
-function getImageReady( product_id, destination ){
+function getImageReady( detail_id, destination ){
 	var dest = "'" + destination + "'"; 
-	var funct =  "getStatus(" +  product_id + ","   +    dest  +")"; 
+	var funct =  "getStatus(" +  detail_id + ","   +    dest  +")"; 
 	setTimeout( funct , 3000);
 }
 
-function getStatus( product_id, destination){
+function getStatus( detail_id, destination){
 	var data = {
-		'product_id' : product_id
+		'detail_id' : detail_id
 	};
 	
 	// alert( "The interval id inside is " + intervalID);
@@ -209,7 +211,7 @@ function getStatus( product_id, destination){
 	  data: data,
 	  success: function(response){
 			if(response.status == 'OK'){
-				replaceImage(product_id, response.image_location);
+				replaceImage(detail_id, response.image_location);
 				// alert("The status is " + response.status) ;
 				// console.log("ok " + response.image_location);
 				// alert("the interval id is " + response.interval_id )
@@ -218,14 +220,14 @@ function getStatus( product_id, destination){
 			else{
 				// alert("not ok yet");
 				// console.log("not ok yet");
-				getImageReady( product_id, destination )
+				getImageReady( detail_id, destination )
 			}
 		}
 	});
 }
 
-function replaceImage(product_id, image_location){
-	$("#product-image-" + product_id + " img").attr('src',image_location );
+function replaceImage(detail_id, image_location){
+	$("#detail-image-" + detail_id + " img").attr('src',image_location );
 }
 
 

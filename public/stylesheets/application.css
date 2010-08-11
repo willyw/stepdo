@@ -23,3 +23,6 @@ body { width:100%;  font-size:14px; font-family:  Trebuchet MS,Trebuchet,Arial,H
 #main div.detail-wrapper ul.uploaded_pic_wrapper { list-style :none; margin-top:30px;}
 #main div.detail-wrapper ul.uploaded_pic_wrapper  li { float : left; width: 160px; height:160px;}
 #main  div.content-pic-wrapper{ display: none;}
+
+
+#loader { display : none;}
