@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller =>"welcome", :action =>"index"
   map.create_guide "/create_guide", :controller =>"posts" , :action =>'new'
   map.check_image_ready "/is_image_ready", :controller => "details", :action => "is_image_ready"
+  map.guide "/guide/:permalink", :controller =>"posts" , :action => "show"
   map.guide "/guide/:post_id", :controller =>"posts" , :action => "show"
   
   
