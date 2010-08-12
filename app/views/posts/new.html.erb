@@ -3,7 +3,7 @@
 	<% form_for Post.new , :html=>{:class=>"post_title"} do |f| %>
 		<%= f.text_field :title  %>
 			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			
 		
 		<%= submit_tag "Done" %>
@@ -17,7 +17,7 @@
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="1" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -29,7 +29,7 @@
 			<%= f.text_area :description, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="1" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		<%= render :partial => "add_detail", :locals => {:order => 1} %>
@@ -42,7 +42,7 @@
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="2" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -56,7 +56,7 @@
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="2" />
 			<%= submit_tag "Done" %>
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 		<% end %>
 		<%= render :partial => "add_detail" , :locals => {:order => 2}%>
 	</div>
@@ -67,7 +67,7 @@
 			<%= f.text_field :title, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="3" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		
@@ -80,7 +80,7 @@
 			<%= f.text_area :description, :id => "" %>
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="order" name="step[order]" value="3" />
-			<input type="hidden" class="post_owner" name="post_owner" value="1" />
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<%= submit_tag "Done" %>
 		<% end %>
 		

@@ -1,0 +1,9 @@
+<div class='detail-wrapper'>
+	<ul class="uploaded_pic_wrapper clearfix" id="pic-wrapper_<%= order %>">
+		<% for detail in step.details %>
+			<li>
+				<%= image_tag(detail.photo.url(:small))%>
+			</li>
+		<% end %>
+	</ul>
+</div>

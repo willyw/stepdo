@@ -37,10 +37,12 @@ class Detail < ActiveRecord::Base
       :post_owner => params[:post_owner]
       })
     @step = Step.find_or_create( {:step => {
-      :order => params[:step_order]}
+      :order =>  params[:step_order]}
       } , @post)
 
-
+      puts "The content of params[:step_order]\n"*5
+      puts params[:detail]
+      puts params[:step_order]
 
     @detail = Detail.new(params[:detail])
     @detail.photo_content_type = MIME::Types.type_for(params[:Filename]).to_s

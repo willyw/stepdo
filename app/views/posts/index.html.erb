@@ -1,0 +1,12 @@
+
+<%= link_to "Create Guide", create_guide_url %>
+<ul>
+	<% for post in @posts %>
+	<div>
+		<h2>
+			<% title =   post.title  || "No title" %>
+			<%= link_to title, guide_url(post.id), :class => "post-title" %>
+		</h2>
+	</div>
+	<% end %>
+</ul>

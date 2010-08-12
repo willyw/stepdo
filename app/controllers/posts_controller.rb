@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+  before_filter :require_user
+  def index
+    @posts = current_user.posts
+  end
+  
   def new
     @post_secret_key = UUIDTools::UUID.timestamp_create.to_s 
   end
@@ -35,8 +40,10 @@ class PostsController < ApplicationController
   end
   
   
-  def review_guide
-    
+  
+  
+  def show
+    @post = Post.find_by_id(params[:post_id])
   end
 
 end

@@ -12,8 +12,13 @@
 			</style>
 		<![endif]-->
 		<%= stylesheet_link_tag "uploadify",  "application" %>
-		<%= javascript_include_tag "jquery-1.4.2.min", "swfobject", "jquery.uploadify.v2.1.0.min", "editor", "application" %>
+		<%= javascript_include_tag "jquery-1.4.2.min", "swfobject", "jquery.uploadify.v2.1.0.min" %>
+		
+		<% if params[:controller] == "posts" and params[:action]== "new"%>
+			<%= javascript_include_tag "editor" %>
+		<% end %>
 
+		<%= javascript_include_tag "application" %>
 	</head>
 
 	<body>

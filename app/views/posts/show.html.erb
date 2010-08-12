@@ -1,0 +1,9 @@
+<div id="post-header">
+	<h1 id='post-title'><%= @post.title %></h1>
+</div> <!-- EO #post-header -->
+
+<ul id="steps-container">
+	<% for step in @post.steps %>
+		<%= render :partial => "step_view", :locals => {:step => step }%>
+	<% end %>
+</ul>

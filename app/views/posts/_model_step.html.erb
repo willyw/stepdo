@@ -4,7 +4,7 @@
 		<input type="text" size="30" name="step[title]" id="">
 		<input type="hidden" value="<%= post_secret_key %>" name="post_secret_key" class="secret_key">
 		<input type="hidden" value="3" name="step[order]" class="order">
-		<input type="hidden" value="1" name="post_owner" class="post_owner">
+		<input type="hidden" value="<%= current_user.id %>" name="post_owner" class="post_owner">
 		<input type="submit" value="Done" name="commit">
 	</form>
 
@@ -16,7 +16,7 @@
 		<textarea rows="20" name="step[description]" id="" cols="40"></textarea>
 		<input type="hidden" value="<%= post_secret_key %>" name="post_secret_key" class="secret_key">
 		<input type="hidden" value="3" name="step[order]" class="order">
-		<input type="hidden" value="1" name="post_owner" class="post_owner">
+		<input type="hidden" value="<%= current_user.id %>" name="post_owner" class="post_owner">
 		<input type="submit" value="Done" name="commit">
 	</form>
 

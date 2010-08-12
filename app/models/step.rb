@@ -36,6 +36,8 @@ class Step < ActiveRecord::Base
   end
   
   def Step.find_or_create( params, post )
+    puts "This is the params in Step.find_or_create\n"*10
+    puts params[:step][:order]
     if @step = Step.step_exists?( params , post)
     else
       @step  = Step.create( :post_id => post.id, 
