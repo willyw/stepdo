@@ -30,9 +30,10 @@ body { width:100%;  font-size:14px; font-family:  Trebuchet MS,Trebuchet,Arial,H
 
 
 /* for the login */
-form#new_user_session { width:400px; margin:0 auto; border:5px solid black; padding: 10px 10px 10px 30px; }
+form#new_user_session { width:400px; margin:0 auto; border:5px solid black; padding: 20px 10px 20px 30px; }
 div#input-wrapper { width:400px; margin : 0 auto;}
 input#user_session_submit { display: block !important;}
 #user_session_email{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:300px; text-align:left; display:block;  margin-bottom:5px;}
 #user_session_password { border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:300px; text-align:left; display:block;  margin-bottom:5px;}
-#user_session_submit { border:0; background:0 ; border:2px solid black; cursor: pointer;}
+#user_session_submit { border:0; background:0 ; border:2px solid black; cursor: pointer; padding: 1px 2px; font-weight:bold; font-size:14px; color:rgb(250,250,250); background-color:rgb(50,50,50); outline:none;}
+#user_session_remember_me { outline:none;}
