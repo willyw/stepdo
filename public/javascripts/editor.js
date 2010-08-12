@@ -1,14 +1,61 @@
 $(document).ready(function(){
+	$("#preview").click(function(){
+		if($(this).attr('status') == 'edit'){
+			// hide all button
+			$(this).attr('status', 'preview');
+			$(this).text('Edit');
+			$("img.upload-image").each(function(){
+				$(this).hide();
+			});
+			$("img.upload-code").each(function(){
+				$(this).hide();
+			});
+			
+			$("div.content-pic-wrapper").each(function(){
+				$(this).hide();
+			});
+		}else if( $(this).attr('status') == 'preview'){
+			$(this).attr('status', 'edit');
+			$(this).text('Preview');
+			$("img.upload-image").each(function(){
+				$(this).show();
+			});
+			$("img.upload-code").each(function(){
+				$(this).show();
+			});	
+		}
+	});
 
 	$("#add_step").click(function(){
 		// code to add step
-		var $step = $('div.step').last().clone();
+		var $step = $('#step-n').clone().attr('id', '').show();
 		var stepCounter  = $('div.step').length;
-		$step.attr('id', "step-" + (stepCounter + 1) ); 
-		$step.appendTo("#main ul");
-		$("h2", $step).text("New Step of Your Guide");
+		// console.log( "stepCounter is " + stepCounter);
+		$step.attr('id', "step-" + (stepCounter ) ); 
+		$step.appendTo("ul#steps-container");
+		
+		// set the auth_token
+		var authenticity_token = "";
+		$("input[type='hidden']", $("form.new_step_title").first() ).each(function(){
+			if($(this).attr('name') == 'authenticity_token'){
+				authenticity_token = $(this).attr('value');
+				return false;
+			}
+		});
+		// console.log( authenticity_token );
+		// set the div.loading-bar
+		var loading_bar = "loading-bar-" + (stepCounter ) ;
+		$("div.loading-bar", $step ).attr('id', loading_bar );
+		// console.log( loading_bar );
+		// set the input.uploadify
+		var input_uploadify = "uploadify-" + stepCounter; 
+		$("input.uploadify", $step ).attr('id', input_uploadify );
+		// set the ul.uploaded_pic_wrapper 
+		var pic_wrapper = "pic-wrapper_" + stepCounter;
+		$("ul.uploaded_pic_wrapper", $step ).attr('id', pic_wrapper );
+		// set the input.order 
 		$("input.order", $step).each(function(){
-			$(this).attr('value', (stepCounter + 1) );
+			$(this).attr('value', stepCounter);
 		});
 		return false;
 	});
@@ -58,7 +105,7 @@ $(document).ready(function(){
 						// console.log("ZOMG... ");
 						
 						var obj= $.parseJSON( response );
-						console.log(response);
+						// console.log(response);
 						// var $image = $("<img src='" + obj.img_source + "' />");
 						//  
 						// $image.appendTo( $("ul.uploaded_pic_wrapper", $target.parent()));
@@ -76,8 +123,6 @@ $(document).ready(function(){
 			}else{
 				
 			}
-				
-			
 			$("div.content-pic-wrapper", $target.parent()).show();
 		}
 		

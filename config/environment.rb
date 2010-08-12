@@ -8,10 +8,14 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   
-  config.gem 'uuidtools'
+  
   config.time_zone = 'UTC'
 
+  config.gem 'uuidtools'
   config.gem 'mime-types', :lib => 'mime/types'
+
+  config.gem 'authlogic'
+
 
   %w(middleware).each do |dir|
     config.load_paths << "#{RAILS_ROOT}/app/#{dir}"
