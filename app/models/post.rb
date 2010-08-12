@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   has_many :steps
-  
+  has_many :permalink_repos
   
 # from the posts_controller
 # create or update comes from the idea that the post 
