@@ -70,6 +70,37 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#main").submit(function(e){
+		var $target= $(e.target);
+		if( $target.hasClass("add_detail_code") ){
+			// console.log("Yeah");
+		}
+		// console.log("boom boom");
+		$("textarea", $target).hide();
+		$("input[type='submit']", $target).hide();
+		$("h2", $target.parent()).hide();
+		$("div.loading-codify", $target).show();
+		var dataSend = $target.serialize();
+		var destination = $target.attr('action');
+		$.ajax({
+			type: "POST",
+			url: destination,
+			data: dataSend,
+			dataType : 'script',
+			success: function(response){
+				// $("form.post_title", $target.parent() ).replaceWith(new_form);
+				// console.log("response received");
+				// alert(content);
+				$("div.uploaded_code_container", $target.parent().parent()).html("");
+				$("div.uploaded_code_container", $target.parent().parent()).append(new_content);
+				start_highlight(brush_location);
+				$target.replaceWith(new_form);
+				// $target.hide();
+			}
+		});
+		return false;
+	});
+	
 	$("#main").click(function(e){
 		var $target = $(e.target);
 		

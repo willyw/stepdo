@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :posts
   map.resources :steps
   map.resources :details
+  map.resources :detail_codes
   
   map.resource :user_session
   map.login "/login", :controller => "user_sessions", :action => "new" # optional, this just sets the root route

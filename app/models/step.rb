@@ -1,6 +1,7 @@
 class Step < ActiveRecord::Base
   belongs_to :post
   has_many :details
+  has_one :detail_code
   
   
 # from the steps_controller

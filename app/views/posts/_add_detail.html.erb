@@ -15,4 +15,22 @@
 	
 	<ul class="uploaded_pic_wrapper clearfix" id="pic-wrapper_<%= order %>">
 	</ul>
+	
+	
+	<div class='content-code-wrapper'>
+		<h2>Put your code in the text box, wrapped with <%=h "<pre></pre>" %></h2>
+		<% form_for DetailCode.new, :html => {:id => "", :class=>"add_detail_code"} do |f| %>
+			<%= f.text_area :code, :id => "codify-#{order}" , :class=>"codify", :size => "20x5" %>
+			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
+			<input type="hidden" class="order" name="step[order]" value="1" />
+			<%= submit_tag "Upload", :class=>"code-upload"%>
+			<div id='loading-codify-<%= order %>' class='loading-codify'> <img src="/images/ajax-loader.gif" /></div>
+			
+		<% end %>
+	</div>
+	
+	
+	
+	<div class="uploaded_code_container">
+	</div>
 </div>

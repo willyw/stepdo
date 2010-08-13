@@ -24,28 +24,34 @@
 		<% end %>
 		<script type="text/javascript" src="/javascripts/SyntaxHighlighter/scripts/shCore.js"></script>
 		<script src="/javascripts/SyntaxHighlighter/src/shAutoLoader.js" type="text/javascript"></script>
-		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag "syntax_util", "application" %>
+		<script src="/javascripts/SyntaxHighlighter/scripts/shBrushRuby.js" type="text/javascript"></script>
 	</head>
 
 	<body>
-		<pre class="brush: ruby">
-		require 'rubygems'
-		require 'httparty'
-		
-		if monkey
-			strike_the_point
-		else
-			don_do_anything
-		end
-		
-		def strike_the_point
-			return false if there_is_nothing
-		end
-		
-		def don_do_anything
-			boombastic
-		end
+		<pre class="brush: js">
+		function foo()
+		{
+		}
 		</pre>
+		<!-- <pre class="brush: ruby">
+					require 'rubygems'
+					require 'httparty'
+					
+					if monkey
+						strike_the_point
+					else
+						don_do_anything
+					end
+					
+					def strike_the_point
+						return false if there_is_nothing
+					end
+					
+					def don_do_anything
+						boombastic
+					end
+					</pre> -->
 		
 		<div id="wrap">
 			<%= render :file => "layouts/header.html.erb" %>
