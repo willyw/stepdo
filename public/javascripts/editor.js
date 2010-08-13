@@ -62,8 +62,11 @@ $(document).ready(function(){
 	
 	$("#main").keypress(function(e){
 		if(e.keyCode == '13'){
-			// alert("enter is pressed");
-			return false;
+			var classValue = $(e.target).parent().attr('class');
+			if( classValue=="new_step_title" || classValue=="new_step_description" || 
+				classValue=="post_title" ){
+					return false;
+			}
 		}
 	});
 	

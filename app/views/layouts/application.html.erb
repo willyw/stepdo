@@ -11,17 +11,42 @@
 				#wrap {display:table;height:100%}
 			</style>
 		<![endif]-->
-		<%= stylesheet_link_tag "uploadify",  "application" %>
+		<%= stylesheet_link_tag "uploadify", "application" %>
+		
+		<link type="text/css" rel="stylesheet" media="screen" href="/javascripts/SyntaxHighlighter/styles/shCore.css">
+		<link type="text/css" rel="stylesheet" media="screen" href="/javascripts/SyntaxHighlighter/styles/shThemeDefault.css">
+		<%= stylesheet_link_tag "application" %>
+		
 		<%= javascript_include_tag "jquery-1.4.2.min", "swfobject", "jquery.uploadify.v2.1.0.min" %>
 		
 		<% if params[:controller] == "posts" and params[:action]== "new"%>
 			<%= javascript_include_tag "editor" %>
 		<% end %>
-
+		<script type="text/javascript" src="/javascripts/SyntaxHighlighter/scripts/shCore.js"></script>
+		<script src="/javascripts/SyntaxHighlighter/src/shAutoLoader.js" type="text/javascript"></script>
 		<%= javascript_include_tag "application" %>
 	</head>
 
 	<body>
+		<pre class="brush: ruby">
+		require 'rubygems'
+		require 'httparty'
+		
+		if monkey
+			strike_the_point
+		else
+			don_do_anything
+		end
+		
+		def strike_the_point
+			return false if there_is_nothing
+		end
+		
+		def don_do_anything
+			boombastic
+		end
+		</pre>
+		
 		<div id="wrap">
 			<%= render :file => "layouts/header.html.erb" %>
 			<div id="main" class="clearfix">

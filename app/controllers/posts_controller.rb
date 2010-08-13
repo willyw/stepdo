@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   
   
   def show
-    @post = Post.find_by_id(params[:post_id])
+    @post = Post.find_by_permalink(params[:permalink])
   end
 
 end
