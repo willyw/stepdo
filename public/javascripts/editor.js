@@ -72,6 +72,7 @@ $(document).ready(function(){
 	
 	$("#main").submit(function(e){
 		var $target= $(e.target);
+		var $target_parent = $target.parent();
 		if( $target.hasClass("add_detail_code") ){
 			// console.log("Yeah");
 		}
@@ -91,10 +92,27 @@ $(document).ready(function(){
 				// $("form.post_title", $target.parent() ).replaceWith(new_form);
 				// console.log("response received");
 				// alert(content);
+				if( $("img.upload-code", $target_parent.parent()).hasClass('no-show') ){
+					// nothing
+				}else{
+					$("img.upload-code", $target_parent.parent()).addClass('no-show');
+				}
+	
 				$("div.uploaded_code_container", $target.parent().parent()).html("");
 				$("div.uploaded_code_container", $target.parent().parent()).append(new_content);
-				start_highlight(brush_location);
-				$target.replaceWith(new_form);
+				// restart_highlight(brush_location);
+				start_highlight();
+				// SyntaxHighlighter.autoloader(
+				// 						  'js jscript javascript  /javascripts/SyntaxHighlighter/scripts/shBrushJScript.js',
+				// 						  'ruby rails ror rb      /javascripts/SyntaxHighlighter/scripts/shBrushRuby.js'
+				// 						);
+				// 		SyntaxHighlighter.defaults['tab-size'] = 2;
+				// 		SyntaxHighlighter.defaults['toolbar']  = false;
+				// 
+				// 		SyntaxHighlighter.all();
+			
+				$target= $target.replaceWith(new_form);
+				$target_parent.hide();
 				// $target.hide();
 			}
 		});
@@ -105,6 +123,19 @@ $(document).ready(function(){
 		var $target = $(e.target);
 		
 		// for pic upload
+		
+		if($target.hasClass('upload-code')){
+			if($target.hasClass('no-show')){
+				$("div.content-code-wrapper", $target.parent()).show();
+				$target.removeClass('no-show');
+			}else{
+				$("div.content-code-wrapper", $target.parent()).hide();
+				$target.addClass('no-show');
+			}
+			
+		}
+		
+		
 		if( $target.hasClass("upload-image")){			
 			var destination = $("form.add_detail_pic", $target.parent() ).attr('action');
 			var session_key_name = $("#session_key_name").attr('value');

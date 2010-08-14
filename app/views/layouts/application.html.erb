@@ -14,27 +14,34 @@
 		<%= stylesheet_link_tag "uploadify", "application" %>
 		
 		<link type="text/css" rel="stylesheet" media="screen" href="/javascripts/SyntaxHighlighter/styles/shCore.css">
-		<link type="text/css" rel="stylesheet" media="screen" href="/javascripts/SyntaxHighlighter/styles/shThemeDefault.css">
+		<link type="text/css" rel="stylesheet" media="screen" href="/javascripts/SyntaxHighlighter/styles/shThemeEclipse.css">
 		<%= stylesheet_link_tag "application" %>
 		
 		<%= javascript_include_tag "jquery-1.4.2.min", "swfobject", "jquery.uploadify.v2.1.0.min" %>
 		
+
+		<script type="text/javascript" src="/javascripts/SyntaxHighlighter/scripts/shCore.js"></script>
+		<script src="/javascripts/SyntaxHighlighter/scripts/shAutoLoader.js" type="text/javascript"></script>
+		
 		<% if params[:controller] == "posts" and params[:action]== "new"%>
 			<%= javascript_include_tag "editor" %>
+			<%= render :file => "layouts/editor_brush" %>
 		<% end %>
-		<script type="text/javascript" src="/javascripts/SyntaxHighlighter/scripts/shCore.js"></script>
-		<script src="/javascripts/SyntaxHighlighter/src/shAutoLoader.js" type="text/javascript"></script>
+		
+		
 		<%= javascript_include_tag "syntax_util", "application" %>
-		<script src="/javascripts/SyntaxHighlighter/scripts/shBrushRuby.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		<!-- 
 		<pre class="brush: js">
 		function foo()
 		{
 		}
-		</pre>
-		<!-- <pre class="brush: ruby">
+		</pre> 
+		-->
+		<!-- 
+		<pre class="brush: ruby">
 					require 'rubygems'
 					require 'httparty'
 					
@@ -51,7 +58,8 @@
 					def don_do_anything
 						boombastic
 					end
-					</pre> -->
+					</pre> 
+					-->
 		
 		<div id="wrap">
 			<%= render :file => "layouts/header.html.erb" %>

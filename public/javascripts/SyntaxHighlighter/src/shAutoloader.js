@@ -96,6 +96,7 @@ sh.autoloader = function()
 			;
 		
 		script.src = url;
+		
 		script.type = 'text/javascript';
 		script.language = 'javascript';
 		script.onload = script.onreadystatechange = function()

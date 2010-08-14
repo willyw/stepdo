@@ -1,35 +1,38 @@
 function restart_highlight(brush_location){
-	var found = 0;
+	var found = false;
 	var regex =  new RegExp(brush_location);
-	
+	// "/javascripts/SyntaxHighlighter/scripts/shBrushRuby.js"
+	// console.log( "The brush is at  " + brush_location);
 	$("script").each(function(){
 		var source = $(this).attr('src');
-		console.log(source);
+		// console.log(source);
+		if( regex.test( source ) ){
+			found = true;
+		}
 	});
 	
 	
-	// // is there similar script that has been loaded? 
-	// 
-	// // if not, create it
-	// var script = document.createElement('script'),
-	// 	done = false
-	// 	;
-	// script.src = script_object.url;
-	// script.type = 'text/javascript';
-	// script.language = 'javascript';
-	// script.onload = script.onreadystatechange = function()
-	// {
-	// 	if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete'))
-	// 	{
-	// 		done = true;
-	// 		// Handle memory leak in IE
-	// 		script.onload = script.onreadystatechange = null;
-	// 		script.parentNode.removeChild(script);
-	// 	}
-	// };
-	// 
-	// // sync way of adding script tags to the page
-	// document.body.appendChild(script);
+	if(found == false){
+		// get it from the server
+		var script = document.createElement('script');
+		script.src = brush_location;
+		script.type = 'text/javascript';
+		script.language = 'javascript';
+		script.onload = script.onreadystatechange = function()
+		{
+			if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete'))
+			{
+				done = true;
+				
+				// Handle memory leak in IE
+				script.onload = script.onreadystatechange = null;
+				script.parentNode.removeChild(script);
+			}
+		};
+		// console.log("found is false all the way");
+		document.body.appendChild(script);
+	}
+	
 	SyntaxHighlighter.defaults['tab-size'] = 2;
 	SyntaxHighlighter.all();
 }
@@ -65,6 +68,8 @@ function start_highlight(){
 	  'xml xhtml xslt html    @shBrushXml.js'
 	));
 	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar']  = false;
+
 	SyntaxHighlighter.all();
 }
 
@@ -77,6 +82,9 @@ function path()
 
   for(var i = 0; i < args.length; i++)
       result.push(args[i].replace('@', '/javascripts/SyntaxHighlighter/scripts/'));
+	// for(var i = 0 ; i < result.length; i++){
+	// 	console.log( result[i] );
+	// }
 
   return result
 };

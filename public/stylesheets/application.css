@@ -23,7 +23,7 @@ body { width:100%;  font-size:14px; font-family:  Trebuchet MS,Trebuchet,Arial,H
 #main div.detail-wrapper ul.uploaded_pic_wrapper { list-style :none; margin-top:30px;}
 #main div.detail-wrapper ul.uploaded_pic_wrapper  li { float : left; width: 160px; height:160px;}
 #main  div.content-pic-wrapper{ display: none;}
-/*#main  div.content-code-wrapper{ display: none;}*/
+#main  div.content-code-wrapper{ display: none;}
 #main form.add_detail_code textarea{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:18px; outline:none; width:80%; text-align:left; display:block;  margin-bottom:5px; height:100px; font-family: Helvetica, Arial; padding: 5px 10px; color: #646464; line-height:150%; margin-left:20px;}
 #main input.code-upload { display:block; margin-left:20px; background: 0; border:0 ; border: 2px solid rgb(100,100,100); font-size:14px; background-color:rgb(100,100,100); color:white; cursor: pointer; outline:none;}
 #main form.add_detail_code div.loading-codify { display: none;}

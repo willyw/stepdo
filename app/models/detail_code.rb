@@ -2,7 +2,7 @@ class DetailCode < ActiveRecord::Base
   belongs_to :step
   
   def DetailCode.create_or_update( params )
-    @post = Post.find_or_create({:post_secret_key => params[:uuid],
+    @post = Post.find_or_create({:post_secret_key => params[:post_secret_key],
       :post_owner => params[:post_owner]
       })
     @step = Step.find_or_create( {:step => {
@@ -34,16 +34,19 @@ class DetailCode < ActiveRecord::Base
      })
   end
   
-  def give_brush_destination(string )
-    regex  = /<pre +class=["']brush +: +([a-zA-Z.]+) *["']>/
-    string.match(regex);value  = $1
+  def give_brush_destination
+    string = self.code
+    regex  = /<pre +class=\\?["']brush *: +([a-zA-Z.]+) *\\?["']>/
+    string.match(regex); value  = $1
+    if value.nil?
+      value = 'plain'
+    end
     destination = DC_MAPPER[value.to_sym]
     if destination.nil?
       return "/javascripts/SyntaxHighlighter/scripts/shBrushPlain.js"
     else
       destination
     end
-    
   end
   
   
