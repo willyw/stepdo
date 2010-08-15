@@ -9,7 +9,7 @@
 		</ul>
 	<% end %>
 	
-	<% if step.detail_code.length > 0 %>
+	<% if !step.detail_code.blank?  %>
 		<div class="uploaded_code_container">
 			<% if step.detail_code %>
 			<%= step.detail_code.code %>
