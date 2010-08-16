@@ -2,6 +2,7 @@ class StepsController < ApplicationController
   def create
     @step =  Step.create_or_update( params )
     @post = @step.post
+    # sleep 5
     respond_to do |format|
       format.js {
         

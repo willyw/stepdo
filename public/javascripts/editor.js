@@ -121,21 +121,9 @@ $(document).ready(function(){
 	
 				$("div.uploaded_code_container", $target.parent().parent()).html("");
 				$("div.uploaded_code_container", $target.parent().parent()).append(new_content);
-				// restart_highlight(brush_location);
-				// start_highlight();
-				// $("div.dp-highlighter").each(function(){
-				// 	$(this).remove();
-				// });
+	
 				$("div.uploaded_code_container pre", $target.parent().parent()).syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
-				// $("code,pre").syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
-				// SyntaxHighlighter.autoloader(
-				// 						  'js jscript javascript  /javascripts/SyntaxHighlighter/scripts/shBrushJScript.js',
-				// 						  'ruby rails ror rb      /javascripts/SyntaxHighlighter/scripts/shBrushRuby.js'
-				// 						);
-				// 		SyntaxHighlighter.defaults['tab-size'] = 2;
-				// 		SyntaxHighlighter.defaults['toolbar']  = false;
-				// 
-				// 		SyntaxHighlighter.all();
+
 			
 				$target= $target.replaceWith(new_form);
 				$target_parent.hide();
@@ -219,6 +207,9 @@ $(document).ready(function(){
 		
 		
 		if(  $target.attr('id') == "post-title" ) {
+			if($target.hasClass("loading")){
+				return false;
+			}
 			$target.hide();
 			$("form.post_title", $target.parent() ).show();
 			$("form.post_title input[type='text']", $target.parent() ).focus();
@@ -251,6 +242,9 @@ $(document).ready(function(){
 		}
 		
 		if( $target.parent().hasClass('step') ){
+			if($target.hasClass("loading")){
+				return false;
+			}
 			if( $target.is('h2') ){
 				$target.hide();
 				$("form.new_step_title input[type='text']", $target.parent() ).show();
@@ -264,6 +258,7 @@ $(document).ready(function(){
 						$("form.new_step_title input[type='text']", $target.parent() ).unbind('blur');
 						$target.text( new_text );
 						$target.show();
+						$target.addClass("loading");
 						$("form.new_step_title", $target.parent() ).hide();
 						
 						var formdata = $("form.new_step_title", $target.parent() ).serialize();
@@ -276,6 +271,7 @@ $(document).ready(function(){
 							success: function(response){
 								// $target.text( title );
 								$("form.new_step_title", $target.parent() ).replaceWith(new_form);
+								$target.removeClass("loading");
 							}
 						});
 					}
@@ -298,6 +294,7 @@ $(document).ready(function(){
 						$("form.new_step_description textarea", $target.parent() ).unbind('blur');
 						$target.text( new_text );
 						$target.show();
+						$target.addClass("loading");
 						$("form.new_step_description", $target.parent() ).hide();
 						
 						var formdata = $("form.new_step_description", $target.parent() ).serialize();
@@ -310,6 +307,7 @@ $(document).ready(function(){
 							success: function(response){
 								// $target.text( title );
 								$("form.new_step_description", $target.parent() ).replaceWith(new_form);
+								$target.removeClass("loading");
 							}
 						});
 					}
