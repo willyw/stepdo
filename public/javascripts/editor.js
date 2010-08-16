@@ -28,13 +28,14 @@ $(document).ready(function(){
 
 	$("#add_step").click(function(){
 		// code to add step
+	
 		var $step = $('#step-n').clone().attr('id', '').show();
 		var stepCounter  = $('div.step').length;
 		// console.log( "stepCounter is " + stepCounter);
 		$step.attr('id', "step-" + (stepCounter ) ); 
 		$step.appendTo("ul#steps-container");
 		
-		// set the auth_token
+		// get the auth_token
 		var authenticity_token = "";
 		$("input[type='hidden']", $("form.new_step_title").first() ).each(function(){
 			if($(this).attr('name') == 'authenticity_token'){
@@ -57,6 +58,26 @@ $(document).ready(function(){
 		$("input.order", $step).each(function(){
 			$(this).attr('value', stepCounter);
 		});
+		
+		
+		// we have to fix the form-codify as well.
+		// added auth_token
+		$("form.add_detail_code input.auth_tok" , $step).attr('value', authenticity_token);
+		
+		//textarea id
+		var textarea_id = 'codify-' + stepCounter;
+		$("form.add_detail_code textarea.codify", $step).attr('id', textarea_id);
+		
+		// post owner-- no.. it is correct
+		// secret key -- from the server
+		//order done
+		// $("form.add_detail_code input.order").attr('value', textarea_id);
+		// loading codify
+		var loading_codify = "loading-codify-" + stepCounter;
+		$("div.loading-codify", $step).attr('id', loading_codify);
+		
+		
+		
 		return false;
 	});
 	

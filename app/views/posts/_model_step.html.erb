@@ -26,16 +26,38 @@
 		<img src="/images/upload_code.png" class="upload-code">
 		<div class="content-pic-wrapper">
 			<h2>Click the Browse button to select pictures</h2>
-			<form method="post" id="" enctype="multipart/form-data" class="add_detail_pic" action="/details"><div style="margin: 0pt; padding: 0pt; display: inline;"><input type="hidden" value="" name="authenticity_token"></div>
+			<form method="post" id="" enctype="multipart/form-data" class="add_detail_pic" action="/details"><div style="margin: 0pt; padding: 0pt; display: inline;">
+				<input type="hidden" value="" name="authenticity_token"></div>
 				<input type="file" size="30" name="detail[photo]" id="uploadify-3" class="uploadify">
 				<input type="hidden" value="1" name="step[order]" class="order">
 				<div class="loading-bar" id="loading-bar-3"></div>
 			</form>
-
-
 		</div>
 
 		<ul id="pic-wrapper_3" class="uploaded_pic_wrapper clearfix">
 		</ul>
+		
+		<div class='content-code-wrapper'>
+			<h2>Put your code in the text box, wrapped with <%=h "<pre></pre>" %></h2>
+
+			<form method="post" id="" class="add_detail_code" action="/detail_codes"><div style="margin: 0pt; padding: 0pt; display: inline;">
+				<input type="hidden" value="nkqLX4ZUsFlnEJniyLFOhSRHP1ULTn23LVkywLGgLMo=" class="auth_tok" name="authenticity_token"></div>
+				<textarea rows="5" name="detail_code[code]" id="codify-1" cols="20" class="codify"></textarea>
+				<input type="hidden" value="<%= current_user.id%>" name="post_owner" class="post_owner">
+				<input type="hidden" value="<%= post_secret_key %>" name="post_secret_key" class="secret_key">
+				<input type="hidden" value="1" name="step[order]" class="order">
+				<input type="submit" value="Upload" name="commit" class="code-upload">
+				<div class="loading-codify" id="loading-codify-1"> <img src="/images/ajax-loader.gif"></div>
+			</form>
+					
+					
+		</div>
+
+
+
+		<div class="uploaded_code_container">
+		</div>
+		
+		
 	</div>
 </div>
