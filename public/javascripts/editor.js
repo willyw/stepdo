@@ -123,7 +123,11 @@ $(document).ready(function(){
 				$("div.uploaded_code_container", $target.parent().parent()).append(new_content);
 				// restart_highlight(brush_location);
 				// start_highlight();
-				$("code,pre").syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
+				// $("div.dp-highlighter").each(function(){
+				// 	$(this).remove();
+				// });
+				$("div.uploaded_code_container pre", $target.parent().parent()).syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
+				// $("code,pre").syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
 				// SyntaxHighlighter.autoloader(
 				// 						  'js jscript javascript  /javascripts/SyntaxHighlighter/scripts/shBrushJScript.js',
 				// 						  'ruby rails ror rb      /javascripts/SyntaxHighlighter/scripts/shBrushRuby.js'
