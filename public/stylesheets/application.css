@@ -45,7 +45,7 @@ input#user_session_submit { display: block !important;}
 
 /* for the post index */
 #main a.post-title { text-decoration: none; font-size:18px;}
-
+	#listing-guide div.guide-item { margin-bottom: 20px;}
 
 code, pre { font: bold 1.1em "Menlo", "Monaco", "BitStream Vera Sans Mono", "Consolas", "Courier New"; }
 code.terminal, pre.terminal, pre.html { font-weight: normal; font-size: 1em; white-space: pre; display: block; background-color: #000; color: #FFF; padding: 4px 16px; }

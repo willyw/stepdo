@@ -21,7 +21,12 @@ class PostsController < ApplicationController
   
   
   def edit
-    @post = Post.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:post_id])
+    # if @post
+    #   # there is post? 
+    # else
+    #   @post = PermalinkRepo.find_by_permalink(params[:permalink ])
+    # end
   end
   
   def update
@@ -43,7 +48,7 @@ class PostsController < ApplicationController
   
   
   def show
-    @post = Post.find_by_permalink(params[:permalink])
+    @post = Post.find_by_id(params[:post_id])
   end
 
 end

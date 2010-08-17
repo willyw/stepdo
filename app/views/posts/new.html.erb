@@ -4,8 +4,6 @@
 		<%= f.text_field :title  %>
 			<input type="hidden" id="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
 			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
-			
-		
 		<%= submit_tag "Done" %>
 	<% end %>
 </div> <!-- EO #post-header -->

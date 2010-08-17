@@ -27,7 +27,7 @@
 		<script type="text/javascript" src="/javascripts/brush.js"></script>
 		
 		
-		<% if params[:controller] =="posts" and params[:action]=="new"%>
+		<% if  edit_mode?(params) %>
 		<%= javascript_include_tag "editor"%>
 		<% end %>
 		<%= javascript_include_tag "syntax_util", "application" %>
