@@ -40,7 +40,7 @@
 	
 	
 	<div class="uploaded_code_container">
-		<% unless step.detail_code.code.blank? %>
+		<% if step.detail_code and    !step.detail_code.code.blank? %>
 			<%= step.detail_code.code %>
 		<% end %>
 	</div>
