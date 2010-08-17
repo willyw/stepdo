@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find_by_id(params[:post_id])
+    @post_secret_key  = @post.uuid
     # if @post
     #   # there is post? 
     # else
