@@ -26,7 +26,7 @@
 	
 	<div class='content-code-wrapper'>
 		<h2>Put your code in the text box, wrapped with <%=h "<pre></pre>" %></h2>
-		<% form_for step.detail_code || step.detail_code.new, :html => {:id => "", :class=>"add_detail_code"} do |f| %>
+		<% form_for step.detail_code || DetailCode.new, :html => {:id => "", :class=>"add_detail_code"} do |f| %>
 			<%= f.text_area :code, :id => "codify-#{order}" , :class=>"codify", :size => "20x5" %>
 			<input type="hidden" class="post_owner" name="post_owner" value="<%= current_user.id %>" />
 			<input type="hidden" class="secret_key" name="post_secret_key" value="<%= @post_secret_key %>" />
