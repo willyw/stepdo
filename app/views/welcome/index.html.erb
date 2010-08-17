@@ -16,7 +16,7 @@
 	</div>
 	
 	<div id='step-2' class="step">
-		<h2>Arrange the idea in the logical manner, step-by-step</h2>
+		<h2>Arrange those ideas in the logical manner, step-by-step</h2>
 		
 		<p class="step-description">
 			We understand that writing guide is a difficult thing to do: <b>you have to think about content and presentation at once</b>. Over here, we have created a template so that you can churn out your thinking rapidly in logical and modular manner (step-by-step).
@@ -27,7 +27,7 @@
 	</div>
 	
 	<div id='step-3' class="step">
-		<h2>Publish and Monetize</h2>
+		<h2>Publish and <span class='strike-through'>Monetize</span> be rewarded</h2>
 
 		
 		<p class="step-description">
@@ -43,14 +43,20 @@
 <div id="options">
 	<ul class="clearfix">
 		<div class="clearfix">
-			<a href="#">Register</a>
+			<a href="#" id="register">Register</a>
 		</div>
-		<div class="clearfix selected">
-			<a href="#">Interesting Guides</a>
-		</div>
+		
 		<div class="clearfix">
-			<a href="#">Ask Question</a>
+			<a href="#" id='login'>Login</a>
 		</div>
+		
+		
+		<div class="clearfix selected">
+			<a href="#" id='interesting'>Interesting Guides</a>
+		</div>
+		<!-- <div class="clearfix">
+			<a href="#" id='ask-question'>Request for Guide</a>
+		</div> -->
 	</ul>
 	
 	<div class="current_show" id="interesting-guides">
@@ -71,9 +77,33 @@
 			Pitching to a VC
 			</a>
 		</h2>
-		
 	</div>
 	
+	
+	<div id="login-form">
+		<% form_for @user_session, :url => user_session_path do |f| %>
+		  <%= f.error_messages %>
+			<div id="input-wrapper">
+			  <%= f.label :email %><br />
+			  <%= f.text_field :email %><br />
+			  <br />
+			  <%= f.label :password %><br />
+			  <%= f.password_field :password %><br />
+			  <br />
+			  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
+			  <br />
+			  <%= f.submit "Login" %>
+			</div>
+		<% end %>
+	</div>
+	
+	<div id="registration-form">
+		<% form_for @user, :url => account_path do |f| %>
+		  <%= f.error_messages %>
+		  <%= render :partial => "/users/form", :object => f %>
+		  <%= f.submit "Register" %>
+		<% end %>
+	</div>
 </div>
 
 
