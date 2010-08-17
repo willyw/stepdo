@@ -22,3 +22,8 @@
 <input type="hidden" id="session_key_value" name="value_name" value="<%= u cookies[session_key_name] %>" />
 <input type="hidden" id="uploadify_auth_token" name="auth_token" value="<%= u form_authenticity_token if protect_against_forgery? %>" />
 <img id="loader" src="/images/ajax-loader.gif" />
+<script type="text/javascript">
+$(document).ready(function () {  
+	$("code,pre").syntaxHighlight({showGutter: false, showControls: false, firstLine: 1});  
+});
+</script>
