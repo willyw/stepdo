@@ -40,26 +40,21 @@
 	</div>
 </ul>
 
-<div id="options">
+<div id="options" class="clearfix">
 	<ul class="clearfix">
-		<div class="clearfix">
-			<a href="#" id="register">Register</a>
-		</div>
-		
-		<div class="clearfix">
-			<a href="#" id='login'>Login</a>
-		</div>
+	
+			<a href="#" id="register" class='nav-welcome'>Register</a>
+
+			<a href="#" id='login' class='nav-welcome'>Login</a>
 		
 		
-		<div class="clearfix selected">
-			<a href="#" id='interesting'>Interesting Guides</a>
-		</div>
+			<a href="#" id='interesting' class="selected nav-welcome">Interesting Guides</a>
 		<!-- <div class="clearfix">
 			<a href="#" id='ask-question'>Request for Guide</a>
 		</div> -->
 	</ul>
 	
-	<div class="current_show" id="interesting-guides">
+	<div class="current_show welcome-form" id="interesting-guides">
 		<h2>
 			<a href="#" class="post-title">
 			Building Startup, Inception way, with you as Cobb and Joi Ito as Saito
@@ -80,8 +75,10 @@
 	</div>
 	
 	
-	<div id="login-form">
-		<% form_for @user_session, :url => user_session_path do |f| %>
+	<div id="login-form" class='welcome-form'>
+		
+		<% form_for @user_session, :html => {:id => "new_user_session_welcome"}, :url => user_session_path do |f| %>
+			<h3 class="tab-selector">Login</h3>
 		  <%= f.error_messages %>
 			<div id="input-wrapper">
 			  <%= f.label :email %><br />
@@ -97,8 +94,9 @@
 		<% end %>
 	</div>
 	
-	<div id="registration-form">
-		<% form_for @user, :url => account_path do |f| %>
+	<div id="registration-form" class="welcome-form">
+		<% form_for @user,:html=>{:id => "new_user_welcome"} ,:url => account_path do |f| %>
+			<h3 class="tab-selector">Registration: the gateway</h3>
 		  <%= f.error_messages %>
 		  <%= render :partial => "/users/form", :object => f %>
 		  <%= f.submit "Register" %>
