@@ -5,6 +5,24 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
   
+  include ExceptionNotification::Notifiable 
+  include ExceptionNotification::ConsiderLocal
+
+protected 
+  def user_layout( layout_name )
+    layout_name || "application"
+  end
+  
+  def local_request?
+    false
+  end
+
+  exception_data :additional_data
+
+  def additional_data
+    current_user ? {:current_user => current_user } : {}
+  end
+  
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)

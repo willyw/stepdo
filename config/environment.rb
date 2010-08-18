@@ -22,3 +22,8 @@ Rails::Initializer.run do |config|
   end
     
 end
+
+
+ExceptionNotification::Notifier.exception_recipients = %w(w.yunnal@gmail.com)
+ExceptionNotification::Notifier.sender_address = %("Application Error" <qtiest.dev@gmail.com>)
+ExceptionNotification::Notifier.email_prefix = "[Error::usualGuide] "

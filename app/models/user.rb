@@ -20,4 +20,11 @@ class User < ActiveRecord::Base
   def confirmed?
     confirmed == true
   end
+  
+  def send_mail
+    UserMailer.deliver_welcome_email
+  end
+  
 end
+
+
