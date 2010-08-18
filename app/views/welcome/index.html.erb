@@ -79,13 +79,15 @@
 		
 		<% form_for @user_session, :html => {:id => "new_user_session_welcome"}, :url => user_session_path do |f| %>
 			<h3 class="tab-selector">Login</h3>
-		  <%= f.error_messages %>
+		  <%#= f.error_messages %>
 			<div id="input-wrapper">
 			  <%= f.label :email %><br />
-			  <%= f.text_field :email %><br />
+			  <%= f.text_field :email %>
+				<%= show_error_on :email, @user_session   %>
 			  <br />
 			  <%= f.label :password %><br />
-			  <%= f.password_field :password %><br />
+			  <%= f.password_field :password %>
+				<%= show_error_on :password, @user_session   %>
 			  <br />
 			  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
 			  <br />
@@ -97,8 +99,8 @@
 	<div id="registration-form" class="welcome-form">
 		<% form_for @user,:html=>{:id => "new_user_welcome"} ,:url => account_path do |f| %>
 			<h3 class="tab-selector">Registration: the gateway</h3>
-		  <%= f.error_messages %>
-		  <%= render :partial => "/users/form", :object => f %>
+		  <%#= f.error_messages %>
+		  <%= render :partial => "/users/form", :locals =>{:f => f, :user => @user} %>
 		  <%= f.submit "Register" %>
 		<% end %>
 	</div>

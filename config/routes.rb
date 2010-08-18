@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :detail_codes
   
   map.resource :user_session
+  map.register "/register", :controller =>"users", :action => "new"
   map.login "/login", :controller => "user_sessions", :action => "new" # optional, this just sets the root route
   map.logout "/logout", :controller => "user_sessions", :action => "destroy" 
   map.resource :account, :controller => "users"

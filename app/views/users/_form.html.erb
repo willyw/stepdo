@@ -1,8 +1,11 @@
-<%= form.label :email %><br />
-<%= form.text_field :email, :class=>"text-form" %><br />
+<%= f.label :email %><br />
+<%= f.text_field :email, :class=>"text-form" %>
+<%= show_error_on :email, user  %>
 <br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password, :class =>"text-form" %><br />
+<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+<%= f.password_field :password, :class =>"text-form" %>
+<%= show_error_on :password, user  %>
 <br />
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation, :class =>"text-form" %><br />
+<%= f.label :password_confirmation %><br />
+<%= f.password_field :password_confirmation, :class =>"text-form" %>
+<%= show_error_on :password_confirmation, user  %>

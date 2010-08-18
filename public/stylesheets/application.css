@@ -2,7 +2,7 @@ body { width:100%;  font-size:14px; font-family:  Trebuchet MS,Trebuchet,Arial,H
 #main { width:960px; margin:0 auto; /*border:1px solid black;*/}
 #footer { text-align:center;}
 span.strike-through { text-decoration: line-through;}
-
+span.limiter { margin: 0 10px;}
 #main input[type='submit'] { display:none;}
 #main h1 { text-align:center; font-size:30px; padding-top:20px; padding-bottom:20px;  line-height:30px;}
 	div#post-header {text-align:center; }
@@ -10,7 +10,7 @@ span.strike-through { text-decoration: line-through;}
 	div#post-header  input[type='text'] { border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(254,254,254); font-size:25px; outline:none; width:95%; text-align:center; margin-top:20px; margin-bottom:20px;}
 	div#post-header	form.post_title{ display:none;}
 	
-	
+
 #main div.step { padding-left:50px; margin-bottom: 25px;}
 #main div.step h2 { font-size:20px; padding-top:10px; padding-bottom:9px;}
 #main div.step h2.loading { color: rgb(200,200,200);}
@@ -67,3 +67,11 @@ code.terminal, pre.terminal, pre.html { font-weight: normal; font-size: 1em; whi
 		form#new_user_welcome { width:400px; margin-left:20px; border:5px solid black; padding: 20px 10px 20px 30px; }
 		form#new_user_welcome .text-form { border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:300px; text-align:left; display:block;  margin-bottom:5px;}
 		#user_submit { border:0; background:0 ; border:2px solid black; cursor: pointer; padding: 1px 2px; font-weight:bold; font-size:14px; color:rgb(250,250,250); background-color:rgb(50,50,50); outline:none;}
+		
+form#new_user{ width:400px; margin: 0 auto; border:5px solid black; padding: 20px 10px 20px 30px; }
+form#new_user	.text-form{ border: 1px solid rgb(200,200,200);  background:0; background-color:rgb(255,255,255); font-size:20px; outline:none; width:300px; text-align:left; display:block;  margin-bottom:5px;}
+form ul.errMsg { display:block; list-style:none; background-color:rgb(240,240,240); color:red;}
+/*header element*/
+h1 a.app-title { margin-left : 50px; text-decoration:none;}
+ul.navigation-main {float:right; list-style:none;}
+ul.navigation-main li { float:left; margin-right:50px;}

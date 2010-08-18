@@ -1,8 +1,22 @@
 <div id="header-wrapper">
 	<div id="header" class="clearfix">
-		<span>usualGuide</span>
-		<% if current_user %>
-			<%= link_to "logout", logout_url%>
-		<% end %>
+		<h1><%= link_to "usualGuide", root_url, :class=>'app-title' %></h1>
+		<!-- <span class="limiter">|</span> -->
+		
+		<ul class='navigation-main clearfix'>
+			<li>
+				<% if current_user %>
+					<%= link_to "logout", logout_url%>
+				<% else %>
+					<%= link_to "login", login_url%>
+				<% end %>
+			</li>
+
+				<li>
+					<%= link_to "Register", register_url%>
+				</li>
+	
+		</ul>
+		
 	</div> <!-- EO div#header -->
 </div> <!-- EO div#header-wrapper -->
