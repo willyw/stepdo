@@ -75,3 +75,5 @@ form ul.errMsg { display:block; list-style:none; background-color:rgb(240,240,24
 h1 a.app-title { margin-left : 50px; text-decoration:none;}
 ul.navigation-main {float:right; list-style:none;}
 ul.navigation-main li { float:left; margin-right:50px;}
+
+p.not-confirmed{ width:600px; margin:30px auto;}

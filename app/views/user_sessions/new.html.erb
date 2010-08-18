@@ -16,3 +16,12 @@
 	  <%= f.submit "Login" %>
 	</div>
 <% end %>
+
+<% if  @not_confirmed %>
+<p class="not-confirmed">Hello!<br /><br />
+	We recognize that you have registered for usualGuide.com. However, we have not 
+	had the registration confirmation from you. To confirm your registration, visit 
+	your inbox  and click the link
+	provided in that email.
+</p>
+<% end %>

@@ -11,10 +11,12 @@
 					<%= link_to "login", login_url%>
 				<% end %>
 			</li>
-
-				<li>
-					<%= link_to "Register", register_url%>
-				</li>
+				
+				<% if params[:controller]=="welcome"%>
+					<li>
+						<%= link_to "Register", register_url%>
+					</li>
+				<% end %>
 	
 		</ul>
 		

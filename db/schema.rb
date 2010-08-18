@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100813050102) do
+ActiveRecord::Schema.define(:version => 20100818045757) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(:version => 20100813050102) do
     t.string   "uuid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "crypted_password",  :null => false
-    t.string   "password_salt",     :null => false
-    t.string   "persistence_token", :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
+    t.boolean  "confirmed",         :default => false
   end
 
 end

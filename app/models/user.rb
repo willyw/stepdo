@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     self.uuid = UUIDTools::UUID.timestamp_create.to_s
     self.save
   end
+  
+  def confirmed?
+    confirmed == true
+  end
 end

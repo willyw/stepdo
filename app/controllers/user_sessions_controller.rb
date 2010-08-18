@@ -4,6 +4,9 @@ class UserSessionsController < ApplicationController
   
   def new
     @user_session = UserSession.new
+    if params[:not_confirmed]
+      @not_confirmed = true
+    end
   end
   
   def create
@@ -12,7 +15,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default posts_url
     else
-      render :action => :new
+      redirect_to login_url
     end
   end
   
