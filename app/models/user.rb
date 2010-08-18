@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
-  after_create :add_uuid
+  after_create :add_uuid, :tell_owner
   
   acts_as_authentic do |c|
     # Email config
@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   
   def send_mail
     UserMailer.deliver_welcome_email
+  end
+  
+  def tell_owner
+    UserMailer.deliver_new_registration( self )
   end
   
 end
