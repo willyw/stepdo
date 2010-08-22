@@ -2,7 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>usualGuide | User Guide Made Simple</title>
+		<% if params[:controller]=="posts" and params[:action]=="show" and @post%>
+			<title>usualGuide | <%=h @post.title %></title>
+		<% else %>
+			<title>usualGuide | User Guide Made Simple</title>
+		<% end %>
+		
 		<meta http-equiv="Content-Language" content="English" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<%= stylesheet_link_tag "base", "sticky_footer" %>
