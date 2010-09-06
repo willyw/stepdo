@@ -3,7 +3,7 @@
 		<ul class="uploaded_pic_wrapper clearfix" id="pic-wrapper_<%= order %>">
 			<% for detail in step.details %>
 				<li>
-					<%= image_tag(detail.photo.url(:small))%>
+					<%= image_tag(detail.photo.url(:small) , :class =>"clearfix img-detail" , :bigsource => "#{detail.photo.url(:display)}")%>
 				</li>
 			<% end %>
 		</ul>

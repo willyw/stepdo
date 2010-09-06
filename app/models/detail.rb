@@ -1,6 +1,6 @@
 require 'mime/types'
 class Detail < ActiveRecord::Base
-  has_attached_file :photo, :styles => { :small => "150x150>" },
+  has_attached_file :photo, :styles => { :small => "150x150>", :display => "500x500>" },
                     :url  => "/assets/details/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/details/:id/:style/:basename.:extension"
   
