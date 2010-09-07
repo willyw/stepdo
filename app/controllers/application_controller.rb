@@ -47,7 +47,7 @@ protected
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to posts_url
         return false
       end
     end
