@@ -268,6 +268,7 @@ $(document).ready(function(){
 							data: formdata,
 							datatype : 'script',
 							success: function(response){
+								// alert("a title has just been added");
 								$("form.new_step_title", $target.parent() ).replaceWith(new_form);
 								// it seems that we have to wait the DOM replacement to finish
 								$target.removeClass("loading");
