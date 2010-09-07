@@ -60,7 +60,6 @@ $(document).ready(function(){
 		});
 		
 		
-		// we have to fix the form-codify as well.
 		// added auth_token
 		$("form.add_detail_code input.auth_tok" , $step).attr('value', authenticity_token);
 		
@@ -269,8 +268,8 @@ $(document).ready(function(){
 							data: formdata,
 							datatype : 'script',
 							success: function(response){
-								// $target.text( title );
 								$("form.new_step_title", $target.parent() ).replaceWith(new_form);
+								// it seems that we have to wait the DOM replacement to finish
 								$target.removeClass("loading");
 							}
 						});
@@ -280,7 +279,7 @@ $(document).ready(function(){
 			} 
 			
 			if( $target.is('p') ){
-				// // alert("yeah, this is p");
+				
 				$target.hide();
 				$("form.new_step_description textarea", $target.parent() ).show();
 				$("form.new_step_description textarea", $target.parent() ).focus();
