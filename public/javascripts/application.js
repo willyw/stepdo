@@ -7,17 +7,7 @@ $(document).ready(function(){
 		var $target = $(e.target);
 
 		if($target.hasClass("img-detail")){
-			// var big_img = []; 
-			// $("img.img-detail", $target.parent().parent()).each(function(){
-			// 	big_img.push( $(this).attr('bigsource') );
-			// });
-			// console.log(big_img.length);
-			// 
-			// for(var i = 0 ; i < big_img.length ; i++){
-			// 	console.log( big_img[i] );
-			// }
 			var location = $target.parent().attr('href');
-			// alert(location);
 			$.fancybox({
 				'padding'		: 0,
 				'autoScale'		: false,
