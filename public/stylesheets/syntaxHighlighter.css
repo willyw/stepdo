@@ -2,7 +2,7 @@
 {
 	font-family: "Menlo", "Monaco", "BitStream Vera Sans Mono", "Consolas", "Courier New", Courier, mono, serif;
 	font-size: 12px;
-	background-color: #0A263F;
+	background-color: rgb(0,0,0);
 	width: 99%;
 	overflow: auto;
 	margin: 18px 0 18px 0 !important;
