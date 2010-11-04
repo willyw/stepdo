@@ -72,6 +72,7 @@
 .dp-highlighter.nogutter .columns div
 {
 	border: 0;
+	background-color:rgb(0,0,0);
 }
 
 .dp-highlighter .columns
@@ -89,7 +90,7 @@
 
 .dp-highlighter ol li.alt
 {
-	background-color: #0A263F;
+	background-color: rgb(0,0,0);
 	color: inherit;
 }
 
